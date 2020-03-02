@@ -1,9 +1,5 @@
 # Ruby
-- task: oc-cmd@2
-  inputs:
-    openshiftService: 'Infra openshift'
-    version: '4.2'
-    cmd: 'oc start-build ruby.ex --follow'
+
 # Package your Ruby project.
 # Add steps that install rails, analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/ruby
@@ -18,6 +14,11 @@ steps:
 - task: UseRubyVersion@0
   inputs:
     versionSpec: '>= 2.5'
+- task: oc-cmd@2
+  inputs:
+    openshiftService: 'Infra openshift'
+    version: '4.2'
+    cmd: 'oc start-build ruby.ex --follow'
 
 - script: |
     gem install bundler
